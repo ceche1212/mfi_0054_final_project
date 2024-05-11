@@ -373,7 +373,22 @@ if selected == 'Submit PART II':
                         st.write(f'Submitted on: {timestamp}')
 
                         ACC = metrics.accuracy_score(credit_y,credit_predictions)
-                        st.metric("ACCURACY",f"{ACC:.3f}")
+                        
+
+                        F1 = metrics.f1_score(credit_y,credit_predictions)
+
+                        cm = pd.DataFrame(metrics.confusion_matrix(credit_y,credit_predictions),
+                                          columns = ["T Pred","F Pred"],index=["T Real","F Real"])
+
+                        columns_part_2 = st.columns(3)
+
+                        with columns_part_2[0]:
+                            st.metric("ACCURACY",f"{100*ACC:.1f} %")
+                        with columns_part_2[1]:
+                            st.metric("F1-Score",f'{F1:.3f}')
+                        
+                        with columns_part_2[2]:
+                            st.dataframe(cm,use_container_width=True)
 
                         solution_part_2_dict = dict()
                         solution_part_2_dict['user'] = st.session_state['user_name']
