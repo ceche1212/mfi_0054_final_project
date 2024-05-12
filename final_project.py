@@ -49,7 +49,7 @@ with st.sidebar:
     st.image("./savila_games_logo.png")
     selected = option_menu(
         menu_title='MFI 0054',
-        options= ['Login','Rankings','My group Submissions','Submit PART I','Submit PART II','Submit PART III'],
+        options= ['Login','Rankings','My group Submissions','Submit PART 4','Submit PART 5','Submit PART 6'],
         icons=['bi bi-person-fill-lock', '123','bi bi-database','bi bi-graph-up-arrow','bi bi-graph-up-arrow','bi bi-graph-up-arrow'], menu_icon="cast"
     )
 
@@ -142,13 +142,13 @@ if selected == "Rankings":
         GROUPS = list(rank_df['group'].unique())
         default_time = pd.to_datetime('01/01/1901, 00:00:00',format="%d/%m/%Y, %H:%M:%S")
 
-        tab1, tab2, tab3 = st.tabs(["Part I", "Part II", "Part III"])
+        tab1, tab2, tab3 = st.tabs(["Part 4", "Part 5", "Part 6"])
 
         with tab1:
 
-            st.header("Part I")
+            st.header("Part 4: Machine Learning Regression")
 
-            rank_part_1 = rank_df[rank_df['type'] == 'part 1']
+            rank_part_1 = rank_df[rank_df['type'] == 'part 4']
             ranking_list_1 = []
             for gr in GROUPS:
 
@@ -172,9 +172,9 @@ if selected == "Rankings":
 
         with tab2:
 
-            st.header("Part II")
+            st.header("Part 5: Machine Learning Classification")
 
-            rank_part_2 = rank_df[rank_df['type'] == 'part 2']
+            rank_part_2 = rank_df[rank_df['type'] == 'part 5']
             ranking_list_2 = []
             for gr in GROUPS:
 
@@ -198,9 +198,9 @@ if selected == "Rankings":
 
         with tab3:
 
-            st.header("Part III")
+            st.header("Part 6: Machine Learning Time-Series")
 
-            rank_part_3 = rank_df[rank_df['type'] == 'part 3']
+            rank_part_3 = rank_df[rank_df['type'] == 'part 6']
             ranking_list_3 = []
             for gr in GROUPS:
 
@@ -247,7 +247,7 @@ if selected == 'My group Submissions':
 #
 #---------------------------------------------------------------------------------------------------------------------------------  
 
-if selected == 'Submit PART I':
+if selected == 'Submit PART 4':
 
     st.markdown("""
         <style>
@@ -262,7 +262,8 @@ if selected == 'Submit PART I':
         """
         , unsafe_allow_html=True)
 
-    st.header('Submit Predictions for Part I')
+    st.header('Submit Predictions for Part 4')
+    st.subheader("Machine Learning Regression")
 
     if st.session_state['user_name'] == '':
         st.warning('Please log in to be able to submit your project solution')
@@ -310,7 +311,7 @@ if selected == 'Submit PART I':
                         solution_part_1_dict['user'] = st.session_state['user_name']
                         solution_part_1_dict['group'] = st.session_state['group']
                         solution_part_1_dict['time'] = timestamp
-                        solution_part_1_dict['type'] = 'part 1'
+                        solution_part_1_dict['type'] = 'part 4'
                         solution_part_1_dict['metric'] = 'MAPE'
                         solution_part_1_dict['score'] = MAPE_house
 
@@ -327,7 +328,7 @@ if selected == 'Submit PART I':
 #
 #---------------------------------------------------------------------------------------------------------------------------------  
 
-if selected == 'Submit PART II':
+if selected == 'Submit PART 5':
 
     st.markdown("""
         <style>
@@ -342,7 +343,8 @@ if selected == 'Submit PART II':
         """
         , unsafe_allow_html=True)
 
-    st.header('Submit Predictions for Part II')
+    st.header('Submit Predictions for Part 5')
+    st.subheader("Machine Learning Classification")
 
     if st.session_state['user_name'] == '':
         st.warning('Please log in to be able to submit your project solution')
@@ -394,7 +396,7 @@ if selected == 'Submit PART II':
                         solution_part_2_dict['user'] = st.session_state['user_name']
                         solution_part_2_dict['group'] = st.session_state['group']
                         solution_part_2_dict['time'] = timestamp
-                        solution_part_2_dict['type'] = 'part 2'
+                        solution_part_2_dict['type'] = 'part 5'
                         solution_part_2_dict['metric'] = 'Accuracy'
                         solution_part_2_dict['score'] = ACC
 
@@ -410,7 +412,7 @@ if selected == 'Submit PART II':
 #
 #---------------------------------------------------------------------------------------------------------------------------------  
 
-if selected == 'Submit PART III':
+if selected == 'Submit PART 6':
 
     # style of the the st.metric cards
     st.markdown("""
@@ -426,7 +428,8 @@ if selected == 'Submit PART III':
         """
         , unsafe_allow_html=True)
 
-    st.header('Submit Predictions for Part III')
+    st.header('Submit Predictions for Part 6')
+    st.subheader("Machine Learning Time-Series")
 
     if st.session_state['user_name'] == '':
         st.warning('Please log in to be able to submit your project solution')
@@ -472,7 +475,7 @@ if selected == 'Submit PART III':
                         solution_part_3_dict['user'] = st.session_state['user_name']
                         solution_part_3_dict['group'] = st.session_state['group']
                         solution_part_3_dict['time'] = timestamp
-                        solution_part_3_dict['type'] = 'part 3'
+                        solution_part_3_dict['type'] = 'part 6'
                         solution_part_3_dict['metric'] = 'MAPE'
                         solution_part_3_dict['score'] = MAPE_energy
 
