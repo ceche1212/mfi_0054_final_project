@@ -86,7 +86,7 @@ if selected == 'Login':
    with st.expander('How to use the app',expanded=True):
       st.markdown("- Check out the **Ranking** 🥇 tab to see where your team stands for each one of the parts.")   
       st.markdown("- Click on **My Group Submissions** 🗃️ to see the history of all the solutions that your team has submitted.")
-      st.markdown("- Hit **Part I, Part II or Part III** 📊 to drop in a new solution.")
+      st.markdown("- Hit **Part 4, Part 5 or Part 6** 📊 to drop in a new solution.")
       st.markdown("- Every time you submit, the app checks if it's all good and pops out some feedback in case you had a bug.") 
       st.markdown("- Keep trying new things and submitting - there's no limit")          
    add_vertical_space(1)
